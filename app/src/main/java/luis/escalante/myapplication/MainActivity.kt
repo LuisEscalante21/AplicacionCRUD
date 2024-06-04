@@ -1,5 +1,6 @@
 package luis.escalante.myapplication
 
+import Modelo.ClaseConexion
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,6 +51,19 @@ class MainActivity : AppCompatActivity() {
                 Log.i("Test de credenciales", "Correo: $nombre y Contraseña: $contrasena")
                 val intent: Intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+
+            }
+        }
+
+        btnRegistrar.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch{
+
+                val objConexion = ClaseConexion().cadenaConexion()
+
+                val addUsuarios= objConexion?.prepareStatement("insert into Usuario(UUID_Usuario, nombre_usuario, contrasena_usuario) values (?, ?, ?)")!!
+                addUsuarios.setString(1, UUID.randomUUID().toString())
+                addUsuarios.setString(2, txtNombre.text.toString())
+                addUsuarios.setString(3, txtContrasena.text.toString())
 
             }
         }
