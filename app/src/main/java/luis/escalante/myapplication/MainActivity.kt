@@ -60,11 +60,12 @@ class MainActivity : AppCompatActivity() {
 
                 val objConexion = ClaseConexion().cadenaConexion()
 
-                val addUsuarios= objConexion?.prepareStatement("insert into Usuario(UUID_Usuario, nombre_usuario, contrasena_usuario) values (?, ?, ?)")!!
+                val addUsuarios= objConexion?.prepareStatement("insert into Usuario (UUID_Usuario, nombre_usuario, contrasena_usuario) values (?, ?, ?)")!!
                 addUsuarios.setString(1, UUID.randomUUID().toString())
                 addUsuarios.setString(2, txtNombre.text.toString())
                 addUsuarios.setString(3, txtContrasena.text.toString())
 
+                addUsuarios.executeUpdate()
             }
         }
     }
