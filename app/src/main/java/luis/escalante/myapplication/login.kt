@@ -14,14 +14,13 @@ import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.UUID
 
-class MainActivity : AppCompatActivity() {
+class login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -30,9 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         val txtNombre = findViewById<EditText>(R.id.txtNombre)
         val txtContrasena = findViewById<EditText>(R.id.txtContrasena)
-        val btnRegistrar: Button = findViewById(R.id.btnRegistrar)
+        val btnIngresar: Button = findViewById(R.id.btnIngresar)
 
-        btnRegistrar.setOnClickListener {
+        btnIngresar.setOnClickListener {
 
             val nombre = txtNombre.text.toString()
             val contrasena = txtContrasena.text.toString()
@@ -47,32 +46,32 @@ class MainActivity : AppCompatActivity() {
             } else {
 
                 Log.i("Test de credenciales", "Correo: $nombre y Contraseña: $contrasena")
+
             }
         }
 
-        btnRegistrar.setOnClickListener {
+        btnIngresar.setOnClickListener{
+            val pantallaPrincipal = Intent(this, tickets::class.java)
             CoroutineScope(Dispatchers.IO).launch{
 
                 val objConexion = ClaseConexion().cadenaConexion()
 
-                val addUsuarios= objConexion?.prepareStatement("insert into Usuario (UUID_Usuario, nombre_usuario, contrasena_usuario) values (?, ?, ?)")!!
-                addUsuarios.setString(1, UUID.randomUUID().toString())
-                addUsuarios.setString(2, txtNombre.text.toString())
-                addUsuarios.setString(3, txtContrasena.text.toString())
+                val comprobarUsuario = objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE nombre_usuario = ? AND contrasena_usuario = ?")!!
+                comprobarUsuario.setString(1, txtNombre.text.toString())
+                comprobarUsuario.setString(2, txtContrasena.text.toString())
 
-                addUsuarios.executeUpdate()
-
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(this@MainActivity, "Usuario creado", Toast.LENGTH_SHORT).show()
-                    txtNombre.setText("")
-                    txtContrasena.setText("")
+                val resultado = comprobarUsuario.executeQuery()
+                if (resultado.next()) {
+                    startActivity(pantallaPrincipal)
+                } else {
+                    println("Usuario no encontrado, verifique las credenciales")
                 }
 
-                btnRegistrar.setOnClickListener {
-                    val pantallalogin = Intent(this@MainActivity, login::class.java)
-                    startActivity(pantallalogin)
-                 }
-            }
+                btnIngresar.setOnClickListener {
+                    val pantallaLogin = Intent(this@login, tickets::class.java)
+                    startActivity(pantallaLogin)
+                }
+             }
         }
     }
 }
