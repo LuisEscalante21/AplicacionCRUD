@@ -41,12 +41,12 @@ class MainActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Error, para acceder debes llenar todas las casillas.",
+                    "Error, para crear la cuenta debe llenar todas las casillas.",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
 
-                Log.i("Test de credenciales", "Correo: $nombre y Contraseña: $contrasena")
+                Log.i("Test de credenciales", "Nombre: $nombre y Contraseña: $contrasena")
             }
         }
 

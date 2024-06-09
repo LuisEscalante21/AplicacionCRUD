@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".login">
 
     <TextView
@@ -60,4 +61,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/txtContrasena"
         app:layout_constraintTop_toBottomOf="@+id/txtContrasena" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="225dp"
+        android:layout_height="206dp"
+        app:srcCompat="@drawable/inicio"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="132dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
