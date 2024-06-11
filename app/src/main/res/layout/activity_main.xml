@@ -22,55 +22,64 @@
 
     <EditText
         android:id="@+id/txtNombre"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="33dp"
+        android:layout_width="308dp"
+        android:layout_height="65dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/txtContrasena"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="329dp"
-        android:layout_height="253dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtNombre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/img" />
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="412dp" />
 
     <EditText
         android:id="@+id/txtContrasena"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="311dp"
+        android:layout_height="53dp"
         android:layout_marginStart="49dp"
         android:layout_marginEnd="49dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="38dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
-    <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="111dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="92dp"
-        android:text="Registrar"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="329dp"
+        android:layout_height="239dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.351"
+        app:srcCompat="@drawable/img" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="181dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="94dp"
+        android:text="Agregar Usuario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnIrLogin"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContrasena" />
+
+    <Button
+        android:id="@+id/btnIrLogin"
+        android:layout_width="167dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="94dp"
+        android:text="Iniciar Sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnRegistrar"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.971" />
 </androidx.constraintlayout.widget.ConstraintLayout>

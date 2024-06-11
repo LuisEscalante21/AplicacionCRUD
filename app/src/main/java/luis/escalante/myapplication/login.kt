@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import luis.escalante.myapplication.R.id.btnRegistrarme
 import java.util.UUID
 
 class login : AppCompatActivity() {
@@ -30,6 +31,7 @@ class login : AppCompatActivity() {
         val txtNombre = findViewById<EditText>(R.id.txtNombre)
         val txtContrasena = findViewById<EditText>(R.id.txtContrasena)
         val btnIngresar: Button = findViewById(R.id.btnIngresar)
+        val btnRegistrarme: Button = findViewById(btnRegistrarme)
 
         btnIngresar.setOnClickListener {
 
@@ -70,6 +72,11 @@ class login : AppCompatActivity() {
                 btnIngresar.setOnClickListener {
                     val pantallaLogin = Intent(this@login, tickets::class.java)
                     startActivity(pantallaLogin)
+                }
+
+                btnRegistrarme.setOnClickListener {
+                    val pantallaRegis = Intent(this@login, MainActivity::class.java)
+                    startActivity(pantallaRegis)
                 }
              }
         }

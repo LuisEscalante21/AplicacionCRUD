@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         val txtNombre = findViewById<EditText>(R.id.txtNombre)
         val txtContrasena = findViewById<EditText>(R.id.txtContrasena)
         val btnRegistrar: Button = findViewById(R.id.btnRegistrar)
+        val btnIrlogin:Button = findViewById(R.id.btnIrLogin)
 
         btnRegistrar.setOnClickListener {
 
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                     txtContrasena.setText("")
                 }
 
-                btnRegistrar.setOnClickListener {
+                btnIrlogin.setOnClickListener {
                     val pantallalogin = Intent(this@MainActivity, login::class.java)
                     startActivity(pantallalogin)
                  }

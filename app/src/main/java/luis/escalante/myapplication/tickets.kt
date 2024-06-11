@@ -89,6 +89,12 @@ class tickets : AppCompatActivity() {
                 val nuevosTickets = obtenerDatos()
                 withContext(Dispatchers.Main){
                     (rcvtickets.adapter as? Adaptador)?.ActualizarLista(nuevosTickets)
+
+                    txtTitulo.setText("")
+                    txtDescripcion.setText("")
+                    txtAutor.setText("")
+                    txtEmail.setText("")
+                    txtFecha.setText("")
                 }
             }
         }
